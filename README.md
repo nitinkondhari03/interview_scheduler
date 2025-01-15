@@ -20,6 +20,6 @@ The interview scheduler booking app allows users to book, edit, and delete inter
 
 ## ScreenShots
 
-### 1. Homepage Page
+### 1. Home Page
 
 
