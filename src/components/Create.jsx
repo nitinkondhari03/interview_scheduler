@@ -31,14 +31,14 @@ const Create = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    for (let i = 0; items.length; i++) {
-      if (
-        items[i].candidate_name == data.candidate_name &&
-        items[i].interviewer_name == data.interviewer_name
-      ) {
-        return alert("Already Booked Interview same interviewer and same candidate")
-      }
-    }
+    // for (let i = 0; items.length; i++) {
+    //   if (
+    //     items[i].candidate_name == data.candidate_name &&
+    //     items[i].interviewer_name == data.interviewer_name
+    //   ) {
+    //     return alert("Already Booked Interview same interviewer and same candidate")
+    //   }
+    // }
     const today = new Date();
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, "0");
