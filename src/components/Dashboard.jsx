@@ -34,25 +34,6 @@ const Dashboard = () => {
   const handleSelectEvent = async ({ id }) => {
     setIsOpen(true);
     setgetid(id);
-    // try {
-    //   const dataResponse = await fetch(
-    //     `https://66ab8757636a4840d7cb10b6.mockapi.io/interview_Scheduler/${id}`,
-    //     {
-    //       headers: {
-    //         Accept: "application/json",
-    //         "Content-Type": "application/json",
-    //       },
-    //       method: "DELETE",
-    //     }
-    //   );
-
-    //   const dataApi = await dataResponse.json();
-    //   console.log(dataApi);
-    //   alert("Data deleted Successfull");
-    //   fetchAlldata();
-    // } catch (error) {
-    //   console.log(error);
-    // }
   };
   const handledelete = async (e) => {
     e.preventDefault();
@@ -71,7 +52,7 @@ const Dashboard = () => {
     for (let i = 0; i < dataResponse.length; i++) {
       let newdata = {
         id: dataResponse[i].id,
-        title: `${dataResponse[i].interview_type} ${" "} interview`,
+        title: `${dataResponse[i].interview_type} ${" "} interview ,Interviewer Name : ${dataResponse[i].interviewer_name} ${" "},Candidate Name: ${dataResponse[i].candidate_name} ${" "}`,
         start: moment(dataResponse[i].Date)
           .set({
             hour: dataResponse[i].time.split(":")[0],
@@ -91,7 +72,7 @@ const Dashboard = () => {
     console.log(obj);
   };
   useEffect(() => {
-    fetchAlldata()
+    fetchAlldata();
   }, []);
   const handleEdit = (e) => {
     e.preventDefault();
