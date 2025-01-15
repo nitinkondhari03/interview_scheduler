@@ -11,7 +11,7 @@ export const fetchBookings = createAsyncThunk(
       const response = await fetch(API_URL);
       const dataResponse = await response.json();
 
-      return;
+      return dataResponse;
     } catch (error) {
       return error;
     }
@@ -74,7 +74,7 @@ const bookingsSlice = createSlice({
   name: "bookings",
   initialState: {
     items: [],
-    status: "idle",
+    status: "",
     error: null,
   },
   reducers: {},

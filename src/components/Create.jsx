@@ -3,9 +3,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Create.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addBooking } from "../redux/bookingsSlice";
+import { addBooking, fetchBookings } from "../redux/bookingsSlice";
+import { useEffect } from "react";
 const Create = () => {
   const dispatch = useDispatch();
+  const { items, status, error } = useSelector((state) => state.bookings);
   const navigate = useNavigate();
   const [data, setData] = useState({
     candidate_name: "",
@@ -14,8 +16,11 @@ const Create = () => {
     time: "",
     interview_type: "",
   });
-
+  useEffect(() => {
+    dispatch(fetchBookings());
+  }, []);
   const handleOnChange = (e) => {
+    console.log(items);
     const { name, value } = e.target;
     setData((preve) => {
       return {
@@ -26,6 +31,14 @@ const Create = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    for (let i = 0; items.length; i++) {
+      if (
+        items[i].candidate_name == data.candidate_name &&
+        items[i].interviewer_name == data.interviewer_name
+      ) {
+        return alert("Already Booked Interview same interviewer and same candidate")
+      }
+    }
     const today = new Date();
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, "0");
@@ -38,14 +51,14 @@ const Create = () => {
     dispatch(addBooking(data));
     navigate("/");
   };
-const handlehome=()=>{
-  navigate("/")
-}
+  const handlehome = () => {
+    navigate("/");
+  };
   return (
     <>
       <div className="main-div">
         <div className="backtohome">
-        <button onClick={handlehome}>Back to Home</button>
+          <button onClick={handlehome}>Back to Home</button>
         </div>
         <div className="form-container">
           <h2 className="form-title">Booking Interview</h2>
