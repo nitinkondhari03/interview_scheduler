@@ -50,6 +50,7 @@ const Create = () => {
       return alert("Booking date is expired. Please select a future date.");
     }
     dispatch(addBooking(data));
+    alert("interview booking successfully")
     navigate("/");
   };
   const handlehome = () => {

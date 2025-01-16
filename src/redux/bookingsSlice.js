@@ -27,7 +27,7 @@ export const addBooking = createAsyncThunk(
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newBooking),
       });
-      return alert("interview booking successfully");
+      return response;
     } catch (error) {
       return alert("same Booking error");
     }
